@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-=======
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
->>>>>>> ef0c52c6e40b52174c995fbca3ecc037498eba0a
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.2.RELEASE</version>
-<<<<<<< HEAD
+
 		<relativePath /> <!-- lookup parent from repository -->
-=======
-		<relativePath/> <!-- lookup parent from repository -->
->>>>>>> ef0c52c6e40b52174c995fbca3ecc037498eba0a
+
 	</parent>
 	<groupId>com.rafalazar.springboot.bootcamp</groupId>
 	<artifactId>service-Personal</artifactId>
@@ -27,7 +21,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-<<<<<<< HEAD
+
 	<repositories>
 		<repository>
 			<id>jcenter-snapshots</id>
@@ -36,8 +30,6 @@
 		</repository>
 	</repositories>
 
-=======
->>>>>>> ef0c52c6e40b52174c995fbca3ecc037498eba0a
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -53,7 +45,6 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-<<<<<<< HEAD
 
 		<!-- Dependencias nuevas -->
 		<dependency>
@@ -73,9 +64,7 @@
 		</dependency>
 
 		<!-- Dependencias nuevas fin -->
-
-=======
->>>>>>> ef0c52c6e40b52174c995fbca3ecc037498eba0a
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -92,6 +81,12 @@
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>
+				spring-cloud-starter-netflix-eureka-client
+			</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -103,4 +98,15 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
