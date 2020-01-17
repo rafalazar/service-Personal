@@ -46,10 +46,6 @@ public class PersonalController {
 			personal.setBirthDay(new Date());
 		}
 		
-		if(personal.getJoinAt() == null) {
-			personal.setJoinAt(new Date());
-		}
-		
 		return service.save(personal).map(p -> ResponseEntity
 				.created(URI.create("/api/personal_clients/".concat(p.getId())))
 				.contentType(MediaType.APPLICATION_JSON)
@@ -66,6 +62,7 @@ public class PersonalController {
 			p.setAddress(personal.getAddress());
 			p.setSex(personal.getSex());
 			p.setBirthDay(personal.getBirthDay());
+			p.setAccount(personal.getAccount());
 			return service.save(p);
 		}).map(p -> ResponseEntity.created(URI.create("/api/personal_clients/".concat(p.getId())))
 				.contentType(MediaType.APPLICATION_JSON).body(p)).defaultIfEmpty(ResponseEntity.notFound().build());
@@ -76,6 +73,14 @@ public class PersonalController {
 		return service.selectById(id).flatMap(p -> {
 			return service.delete(p).then(Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
 		}).defaultIfEmpty(new ResponseEntity<Void>(HttpStatus.NOT_FOUND));
+	}
+	
+	//Buscamos por el DNI
+	@GetMapping("/dni/{dni}")
+	public Mono<ResponseEntity<Personal>> findByNumDni(@PathVariable String dni){
+		return service.findByDni(dni).map(d -> ResponseEntity.ok()
+				.contentType(MediaType.APPLICATION_JSON).body(d))
+				.defaultIfEmpty(ResponseEntity.notFound().build());
 	}
 
 }

@@ -29,23 +29,22 @@ public class Personal {
 	private String address;
 	@NotEmpty
 	@NotNull
-	private char sex;
+	private String sex;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthDay;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date joinAt;
+	private Account account;
 	
 	public Personal() {
 		
 	}
 	
-	public Personal(String name, String lastName, String dni, String address, char sex, Date birthDay) {
+	public Personal(String name, String lastName, String dni, String address, String sex,Account account) {
 		this.name = name;
 		this.lastName = lastName;
 		this.dni = dni;
 		this.address = address;
 		this.sex = sex;
-		this.birthDay = birthDay;
+		this.account = account;
 	}
 
 }
