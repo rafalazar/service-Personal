@@ -3,6 +3,8 @@ package com.rafalazar.springboot.bootcamp.app.controllers;
 import java.net.URI;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,7 +31,7 @@ public class PersonalController {
 	@Autowired
 	private PersonalService service;
 	
-	@GetMapping
+	@GetMapping("/selectAll")
 	public Mono<ResponseEntity<Flux<Personal>>> list(){
 		return Mono.just(ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(service.selectAll()));
 	}
